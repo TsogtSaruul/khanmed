@@ -37,7 +37,11 @@ connectDB();
 const app = express();
 
 // middelwares
-app.use(cors());
+app.use(cors({
+    origin: ["https://khanmed-client.vercel.app"],
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(morgan("dev"));
